@@ -1,24 +1,16 @@
-import logo from './logo.svg';
 import './App.css';
+import MessageList from './containers/MessageList';
 
 function App() {
+  title="Welcome to devChat"
+  subtitle = "A place for devs to get help, offer advice and chill"
+  
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+    <h1>{title}</h1>
+    <h3>{subtitle}</h3>
+      <MessageList />
+    </>
   );
 }
 
