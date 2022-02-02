@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable react/react-in-jsx-scope */
 /* eslint-disable react/prop-types */
 // import {useState} from 'react'
@@ -8,14 +9,38 @@ class MessageList extends Component {
     // const [counter, setCounter] = useState(0);
     // const handleClick = () => setCounter(counter + 1);
     state = {
-        messages: []
+        id: null,
+        messages: [],
+        name: ""
+    }
+
+    componentDidMount() {
+        this.getMessages()
+    }
+
+    componentDidUpdate(prevProps, prevState){
+        if (prevProps.channelId !== this.props.channelId) {
+          this.getMessages()
+        }
+      }
+
+    getMessages = () => {
+        console.log("getting messages")
+        fetch(`http://localhost:3000/channels/${this.props.channelId}`)
+            .then(res => res.json())
+            .then(channel => this.setState({...channel}))
     }
 
     render(){
-        return <ol>
-        {/* <button onClick={handleClick}>{counter}</button> */}
-        {this.state.messages.map((m) => <Message key={m.id} message = {m} />)} 
-    </ol>
+        const { messages, name } = this.state 
+
+        return <>
+            <h1>{name}</h1>
+            <ol>
+                {/* <button onClick={handleClick}>{counter}</button> */}
+                {messages.map((m) => <Message key={m.id} message = {m} />)} 
+            </ol>
+        </>
     }
     
     

@@ -16,10 +16,13 @@ class ChannelList extends Component {
       .then(channels => this.setState({channels}))
   }
 
+
+
   render(){
     return (
       <aside>
         {this.state.channels.map(channel => <Channel key={channel.id} {...channel} changeChannel={ this.props.changeChannel } /> )}
+        <div onClick={() => this.props.changeChannel(null)}>Home</div>
       </aside>
     )
   }

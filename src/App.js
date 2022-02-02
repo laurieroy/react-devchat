@@ -16,11 +16,12 @@ class App extends Component {
   changeChannel = (id) => this.setState({ channelId: id })
 
   render(){
+    const { changeChannel, state: { channelId }} = this
     return <>
-    <ChannelList changeChannel={this.changeChannel} />
+    <ChannelList changeChannel={changeChannel} />
       <main>
-        {this.state.channelId ? <MessageList /> : <Welcome />}
-        {this.state.channelId && <MessageForm />}
+        {channelId ? <MessageList channelId={changeChannel} /> : <Welcome />}
+        {channelId && <MessageForm />}
       </main>
     </>
   }
