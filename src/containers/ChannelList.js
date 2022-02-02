@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/jsx-key */
 /* eslint-disable react/react-in-jsx-scope */
@@ -6,7 +7,7 @@ import Channel from '../components/Channel'
 
 class ChannelList extends Component {
   state = {
-    channels: []
+    channels: [],
   }
 
   componentDidMount(){
@@ -18,7 +19,7 @@ class ChannelList extends Component {
   render(){
     return (
       <aside>
-        {this.state.channels.map(channel => <Channel key={channel.id} {...channel} /> )}
+        {this.state.channels.map(channel => <Channel key={channel.id} {...channel} changeChannel={ this.props.changeChannel } /> )}
       </aside>
     )
   }

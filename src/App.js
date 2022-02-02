@@ -13,10 +13,11 @@ class App extends Component {
     channelId: null,
   }
 
+  changeChannel = (id) => this.setState({ channelId: id })
 
   render(){
     return <>
-    <ChannelList />
+    <ChannelList changeChannel={this.changeChannel} />
       <main>
         {this.state.channelId ? <MessageList /> : <Welcome />}
         {this.state.channelId && <MessageForm />}
