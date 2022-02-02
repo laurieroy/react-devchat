@@ -15,7 +15,6 @@ handleChange(event) {
 handleSubmit(event) {
   event.preventDefault();
 
-  this.props.addMessage(this.state);
   this.setState({message: "", user: ""})
 }
 
