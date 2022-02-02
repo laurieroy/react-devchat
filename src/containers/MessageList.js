@@ -5,6 +5,7 @@
 import { Component } from 'react';
 
 import Message from '../components/Message'
+import MessageForm from '../components/MessageForm'
 
 class MessageList extends Component {
     // const [counter, setCounter] = useState(0);
@@ -21,8 +22,8 @@ class MessageList extends Component {
         this.setState({interval: setInterval(this.getMessages, 5000)})
     }
 
-    componentDidUpdate(prevProps, prevState){
-        if (prevProps.channelId !== this.props.channelId) {
+    componentDidUpdate(prevProps){
+        if (prevProps.match.params.id!== this.props.match.params.id) {
           this.getMessages()
         }
       }
@@ -33,7 +34,7 @@ class MessageList extends Component {
 
     getMessages = () => {
         console.log("getting messages")
-        fetch(`http://localhost:3000/channels/${this.props.channelId}`)
+        fetch(`http://localhost:3000/channels/${this.props.match.params.id}`)
             .then(res => res.json())
             .then(channel => this.setState({...channel}))
     }
@@ -47,6 +48,7 @@ class MessageList extends Component {
                 {/* <button onClick={handleClick}>{counter}</button> */}
                 {messages.map((m) => <Message key={m.id} message = {m} />)} 
             </ol>
+            <MessageForm channelId={ this.props.match.params.id } />
         </>
     }
     
