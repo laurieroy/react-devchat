@@ -3,6 +3,7 @@ import './App.css';
 import { Component } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 
+import MessageForm from './components/MessageForm';
 import MessageList from './containers/MessageList';
 
 class App extends Component {
@@ -16,15 +17,17 @@ class App extends Component {
         {user: "Girl from the Ring", message: "Watch this cool video", id: uuidv4()},
     ]
 }
-addMsg = () =>  {
-  this.setState({messages: [...this.state.messages, {user: "god", message: "lol", id: uuidv4() }]})
+addMsg = (newMessage) =>  {
+  newMessage = {...newMessage, id: uuidv4()}
+  this.setState({messages: [...this.state.messages, newMessage]})
 }
 
   render(){
     return <main>
       <h1>Welcome to devChat</h1>
       <h3>A place for devs to meet up, get help, offer advice and chill</h3> 
-      <MessageList messages={this.state.messages} addMsg={this.addMsg} />
+      <MessageList messages={ this.state.messages } addMsg={ this.addMsg } />
+      <MessageForm addMessage={ this.addMsg } />
     </main>
   }
 

@@ -10,7 +10,6 @@ function MessageList(props){
         return <ol>
             {/* <button onClick={handleClick}>{counter}</button> */}
             {props.messages.map((m) => <Message key={m.id} message = {m} />)} 
-            <button onClick={props.addMsg}>Add message</button>
         </ol>
     
     
