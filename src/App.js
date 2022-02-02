@@ -18,10 +18,10 @@ class App extends Component {
   render(){
     const { changeChannel, state: { channelId }} = this
     return <>
-    <ChannelList changeChannel={changeChannel} />
+      <ChannelList channelId={channelId} changeChannel={changeChannel} />
       <main>
-        {channelId ? <MessageList channelId={changeChannel} /> : <Welcome />}
-        {channelId && <MessageForm />}
+        {channelId ? <MessageList channelId={channelId} /> : <Welcome />}
+        {channelId && <MessageForm channelId={channelId} />}
       </main>
     </>
   }
