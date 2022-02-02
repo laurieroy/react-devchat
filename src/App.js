@@ -17,6 +17,7 @@ class App extends Component {
 
   render(){
     const { changeChannel, state: { channelId }} = this
+    
     return <>
       <ChannelList channelId={channelId} changeChannel={changeChannel} />
       <main>

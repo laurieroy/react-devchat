@@ -4,32 +4,42 @@ import { Component } from 'react';
 
 class MessageForm extends Component {
   state = { 
-    user: "",
+    username: "",
     message: "",
-}
+  }
 
-handleChange(event) {
-  this.setState({value: event.target.value});
-}
+  handleChange(event) {
+    this.setState({[event.target.name]: event.target.value});
+  }
 
-handleSubmit(event) {
-  event.preventDefault();
+  onChange = (e) => {
+    this.setState({[e.target.name]: e.target.value})
+  }
 
-  this.setState({message: "", user: ""})
-}
+  onSubmit(event) {
+    event.preventDefault();
 
-onChange = (e) => {
-  this.setState({[e.target.name]: e.target.value})
-}
+    fetch(`http://localhost:3000/channels/${this.props.channelId}/messages`, {
+      method: 'POST', // or 'PUT'
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(this.state),
+    })
+
+    this.setState({message: "", username: ""})
+  }
+
+
 
   render(){
-    const {message, user} = this.state
+    const {message, username} = this.state
 
     return (
       <form className="message-form" onSubmit={this.onSubmit}>
         <label>
           User:
-          <input type="text" name="user" onChange={this.onChange} value={user} />
+          <input type="text" name="username" onChange={this.onChange} value={username} />
         </label>
         <br/>
         <label>
