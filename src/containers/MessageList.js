@@ -11,18 +11,24 @@ class MessageList extends Component {
     // const handleClick = () => setCounter(counter + 1);
     state = {
         id: null,
+        interval: null,
         messages: [],
         name: ""
     }
 
     componentDidMount() {
         this.getMessages()
+        this.setState({interval: setInterval(this.getMessages, 5000)})
     }
 
     componentDidUpdate(prevProps, prevState){
         if (prevProps.channelId !== this.props.channelId) {
           this.getMessages()
         }
+      }
+
+      componentWillUnmount() {
+          clearInterval(this.state.interval)
       }
 
     getMessages = () => {

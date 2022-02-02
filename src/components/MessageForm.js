@@ -30,8 +30,6 @@ class MessageForm extends Component {
     this.setState({message: "", username: ""})
   }
 
-
-
   render(){
     const {message, username} = this.state
 
