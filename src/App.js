@@ -2,21 +2,24 @@
 import './App.css';
 import { Component } from 'react';
 
+import ChannelList from './containers/ChannelList';
 import MessageForm from './components/MessageForm';
 import MessageList from './containers/MessageList';
+import Welcome from './components/Welcome';
 
 class App extends Component {
   // title=""
   // subtitle = "A place for devs to get help, offer advice and chill"
-
+  state = {
+    channelId: null,
+  }
 
 
   render(){
     return <main>
-      <h1>Welcome to devChat</h1>
-      <h3>A place for devs to meet up, get help, offer advice and chill</h3> 
-      <MessageList  />
-      <MessageForm />
+      
+      {this.state.channelId ? <MessageList /> : <Welcome />}
+      {this.state.channelId && <MessageForm />}
     </main>
   }
 
