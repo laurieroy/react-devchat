@@ -11,14 +11,25 @@ import Signup from "./components/Signup";
 import Welcome from "./components/Welcome";
 
 class App extends Component {
+  state = {
+    user: {
+      username: "",
+      id: null
+    }
+  }
+
+  setUser = (user) => {
+    this.setState({ user })
+  }
+
   render() {
     return (
       <>
         <ChannelList />
         <main>
           <Switch>
-            <Route path="/login" component={Login} />
-            <Route path="/signup" component={Signup} />
+            <Route path="/login"><Login setUser={this.setUser}/></Route>
+            <Route path="/signup"><Signup setUser={this.setUser}/></Route>
             <Route path="/channel/:id" component={MessageList} />
             <Route exact path="/" component={Welcome} />
           </Switch>
