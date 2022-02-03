@@ -3,6 +3,7 @@
 /* eslint-disable react/prop-types */
 // import {useState} from 'react'
 import { Component } from 'react';
+import { Redirect } from 'react-router-dom/cjs/react-router-dom.min';
 
 import Message from '../components/Message'
 import MessageForm from '../components/MessageForm'
@@ -44,6 +45,7 @@ class MessageList extends Component {
 
         return <>
             <h1>{name}</h1>
+            {!this.props.id && <Redirect to="/login" />}
             <ol>
                 {/* <button onClick={handleClick}>{counter}</button> */}
                 {messages.map((m) => <Message key={m.id} message = {m} />)} 

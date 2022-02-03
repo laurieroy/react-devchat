@@ -32,7 +32,7 @@ class App extends Component {
           <Switch>
             <Route path="/login"><Login setUser={this.setUser}/></Route>
             <Route path="/signup"><Signup setUser={this.setUser}/></Route>
-            <Route path="/channel/:id" component={MessageList} />
+            <Route path="/channel/:id" render={(routeProps)=><MessageList {...routeProps} id={id} />} />
             <Route exact path="/" render={()=> <Welcome username={username} /> }/>
           </Switch>
         </main>
