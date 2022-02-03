@@ -23,6 +23,8 @@ class App extends Component {
   }
 
   render() {
+    const {id, username} = this.state.user
+
     return (
       <>
         <ChannelList />
@@ -31,7 +33,7 @@ class App extends Component {
             <Route path="/login"><Login setUser={this.setUser}/></Route>
             <Route path="/signup"><Signup setUser={this.setUser}/></Route>
             <Route path="/channel/:id" component={MessageList} />
-            <Route exact path="/" component={Welcome} />
+            <Route exact path="/" render={()=> <Welcome username={username} /> }/>
           </Switch>
         </main>
       </>
