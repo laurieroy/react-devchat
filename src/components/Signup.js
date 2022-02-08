@@ -1,13 +1,13 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable react/react-in-jsx-scope */
-import { useState } from "react";
-import { NavLink, useHistory } from "react-router-dom";
+import { useState } from 'react';
+import { NavLink, useHistory } from 'react-router-dom';
 
 function Signup(props) {
   const [user, setUser] = useState({
-    username: "",
-    password: "",
-    passwordConfirmation: "",
+    username: '',
+    password: '',
+    passwordConfirmation: '',
   });
 
   const history = useHistory()
@@ -29,7 +29,7 @@ function Signup(props) {
     .then(response => {
       if (!response.errors){
         props.setUser(response)
-         history.push("/")
+         history.push('/')
        } else {
          alert(response.errors)
        }
@@ -38,12 +38,13 @@ function Signup(props) {
 
   return (
     <>
+      <h1>Sign Up!</h1>
       <form onSubmit={handleSubmit}>
         <label>
           Username:
           <input
-            type="text"
-            name="username"
+            type='text'
+            name='username'
             value={user.username}
             onChange={handleChange}
           />
@@ -52,8 +53,8 @@ function Signup(props) {
         <label>
           Password:
           <input
-            type="password"
-            name="password"
+            type='password'
+            name='password'
             value={user.password}
             onChange={handleChange}
           />
@@ -62,20 +63,20 @@ function Signup(props) {
         <label>
           Password Confirmation:
           <input
-            type="text"
+            type='password'
             className={
-              user.password === user.passwordConfirmation ? "match" : "no-match"
+              user.password === user.passwordConfirmation ? 'match' : 'no-match'
             }
-            name="passwordConfirmation"
+            name='passwordConfirmation'
             value={user.passwordConfirmation}
             onChange={handleChange}
           />
         </label>
         <br />
-        <input type="submit" value="Submit" />
+        <input type='submit' value='Submit' />
       </form>
       <br />
-      <NavLink to="/Login">Or Login!</NavLink>
+      <NavLink to='/Login'>Or Login!</NavLink>
     </>
   );
 }

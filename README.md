@@ -1,5 +1,9 @@
 # DevChat
-React frontend to Rails [backend]().
+React frontend to Rails [backend](https://github.com/laurieroy/rails-devchat).
+
+Currently set to poll the backend every 5s for any new messages. I might switch it to websocket in the future.
+
+Auth is using local storage
 
 # Getting Started with Create React App
 

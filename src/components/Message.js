@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 import React, { Component }  from 'react';
-import LikeButton from "./LikeButton"
+import LikeButton from './LikeButton'
 
 class Message extends Component {
 	state = { likes: 0 }

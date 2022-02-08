@@ -1,5 +1,5 @@
 /* eslint-disable react/react-in-jsx-scope */
-import { Link } from "react-router-dom";
+import { Link } from 'react-router-dom';
 
 function Welcome({ username }) {
   const notLoggedIn = () => (
@@ -7,8 +7,8 @@ function Welcome({ username }) {
       <h1>Welcome to devChat</h1>
       <h3>A place for devs to meet up, get help, offer advice and chill</h3>
       <p>
-        <Link to="/login">Login</Link> or <Link to="/signup">Signup</Link> to
-        continue.
+        <Link to='/login'>Login</Link> or 
+        <Link to='/signup'>Signup</Link> to continue.
       </p>
     </>
   );

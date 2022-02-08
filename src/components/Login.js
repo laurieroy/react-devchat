@@ -1,11 +1,11 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable react/react-in-jsx-scope */
-import { useState } from "react";
-import { NavLink, useHistory } from "react-router-dom";
+import { useState } from 'react';
+import { NavLink, useHistory } from 'react-router-dom';
 
 // eslint-disable-next-line no-unused-vars
 function Login(props) {
-  const [user, setUser] = useState({ username: "", password: "" });
+  const [user, setUser] = useState({ username: '', password: '' });
   const history = useHistory()
   const handleChange = (e) =>
     setUser({ ...user, [e.target.name]: e.target.value });
@@ -24,7 +24,7 @@ function Login(props) {
     .then(response => {
       if (!response.errors){
         props.setUser(response)
-         history.push("/")
+         history.push('/')
        } else {
          alert(response.errors)
        }
@@ -33,12 +33,13 @@ function Login(props) {
 
   return (
     <>
+      <h1>Login!</h1>
       <form onSubmit={handleSubmit}>
         <label>
           Username:
           <input
-            type="text"
-            name="username"
+            type='text'
+            name='username'
             value={user.username}
             onChange={handleChange}
           />
@@ -47,17 +48,17 @@ function Login(props) {
         <label>
           Password:
           <input
-            type="password"
-            name="password"
+            type='password'
+            name='password'
             value={user.password}
             onChange={handleChange}
           />
         </label>
         <br />
-        <input type="submit" value="Submit" />
+        <input type='submit' value='Submit' />
       </form>
       <br />
-      <NavLink to="/signup">Or Sign Up!</NavLink>
+      <NavLink to='/signup'>Or Sign Up!</NavLink>
     </>
   );
 }

@@ -4,29 +4,32 @@
 /* eslint-disable react/react-in-jsx-scope */
 import { Component } from 'react';
 import { NavLink } from 'react-router-dom';
-import Channel from '../components/Channel'
+
+import Channel from '../components/Channel';
 
 class ChannelList extends Component {
   state = {
     channels: [],
+  };
+
+  componentDidMount() {
+    fetch('http://localhost:3000/channels')
+      .then((res) => res.json())
+      .then((channels) => this.setState({ channels }));
   }
 
-  componentDidMount(){
-    fetch("http://localhost:3000/channels")
-      .then(res => res.json())
-      .then(channels => this.setState({channels}))
-  }
-
-
-
-  render(){
+  render() {
     return (
       <aside>
-        {this.state.channels.map(channel => <Channel key={channel.id} {...channel} changeChannel={ this.props.changeChannel } selectedId={this.props.channelId} /> )}
-        <NavLink to='/' id='home-link'><div>Home</div></NavLink> 
+        {this.state.channels.map((channel) => (
+          <Channel key={channel.id} {...channel} />
+        ))}
+        <NavLink to='/' id='home-link'>
+          <div>Home</div>
+        </NavLink>
       </aside>
-    )
+    );
   }
 }
 
-export default ChannelList
+export default ChannelList;

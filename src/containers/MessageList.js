@@ -3,7 +3,7 @@
 /* eslint-disable react/prop-types */
 // import {useState} from 'react'
 import { Component } from 'react';
-import { Redirect } from 'react-router-dom/cjs/react-router-dom.min';
+import { Redirect } from 'react-router-dom';
 
 import Message from '../components/Message'
 import MessageForm from '../components/MessageForm'
@@ -15,7 +15,7 @@ class MessageList extends Component {
         id: null,
         interval: null,
         messages: [],
-        name: ""
+        name: ''
     }
 
     componentDidMount() {
@@ -34,7 +34,6 @@ class MessageList extends Component {
       }
 
     getMessages = () => {
-        console.log("getting messages")
         fetch(`http://localhost:3000/channels/${this.props.match.params.id}`)
             .then(res => res.json())
             .then(channel => this.setState({...channel}))
@@ -45,7 +44,7 @@ class MessageList extends Component {
 
         return <>
             <h1>{name}</h1>
-            {!this.props.id && <Redirect to="/login" />}
+            {!this.props.id && <Redirect to='/login' />}
             <ol>
                 {/* <button onClick={handleClick}>{counter}</button> */}
                 {messages.map((m) => <Message key={m.id} message = {m} />)} 
