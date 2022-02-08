@@ -4,8 +4,8 @@ import { Component } from 'react';
 
 class MessageForm extends Component {
   state = { 
-    username: "",
-    message: "",
+    username: '',
+    message: '',
   }
 
   handleChange(event) {
@@ -20,31 +20,27 @@ class MessageForm extends Component {
     event.preventDefault();
 
     fetch(`http://localhost:3000/channels/${this.props.channelId}/messages`, {
-      method: 'POST', // or 'PUT'
+      method: 'POST',
       headers: {
         'Content-Type': 'application/json',
+        'Authorization': localStorage.token
       },
-      body: JSON.stringify(this.state),
+      body: JSON.stringify({message: this.state.message}),
     })
 
-    this.setState({message: "", username: ""})
+    this.setState({message: '', username: ''})
   }
 
   render(){
-    const {message, username} = this.state
+    const {message} = this.state
 
     return (
-      <form className="message-form" onSubmit={this.onSubmit}>
-        <label>
-          User:
-          <input type="text" name="username" onChange={this.onChange} value={username} />
-        </label>
-        <br/>
+      <form className='message-form' onSubmit={this.onSubmit}>
         <label>
           Message:
-          <input type="text" name="message" onChange={this.onChange} value={message} />
+          <input type='text' name='message' onChange={this.onChange} value={message} />
         </label>
-        <input type="submit" value="Submit" />
+        <input type='submit' value='Submit' />
       </form>
   )
   }
